@@ -1,0 +1,25 @@
+#include <opencv2/core/core.hpp>
+#include <opencv2/highgui/highgui.hpp>
+
+using namespace cv;
+using namespace std;
+
+int main(){
+/*{
+
+    Mat image;
+    image = imread("D:\\backup\\hanyang_17_01\\멀티미디어정보처리\\실습자료\\install_Week1/Lena.jpg",0);
+    namedWindow("Display window",CV_WINDOW_AUTOSIZE);
+    imshow("Display window",image);
+    waitKey(0);
+    return 0;
+}*/
+
+
+    Mat img(100,100,CV_8UC3,Scalar(0,0,200));
+    namedWindow("MyWindow",CV_WINDOW_AUTOSIZE);
+    imshow("MyWindow",img);
+    waitKey(0);
+    destroyWindow("MyWindow");
+
+}

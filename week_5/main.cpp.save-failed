@@ -1,0 +1,72 @@
+#include <iostream>
+
+#include <opencv2/core/core.hpp>
+#include <opencv2/highgui/highgui.hpp>
+#include <opencv2/imgproc/imgproc.hpp>
+#include <stdlib.h>
+
+
+using namespace cv;
+using namespace std;
+
+using namespace std;
+int winNum=0;
+void m_show(Mat img){
+    winNum++;
+    namedWindow(winNum+"  Window",CV_WINDOW_AUTOSIZE);
+    imshow(winNum+"  Window",img);
+
+}
+
+String LENA = "D:\\backup\\hanyang_17_01\\멀티미디어정보처리\\실습자료\\hw1\\Lena.jpg";
+int main()
+{
+
+    Mat img = imread(LENA,CV_LOAD_IMAGE_COLOR);
+    Mat st = cvCreateMat(img.rows,img.cols,CV_8UC3);
+
+    float mask[] = {1.0/9.0,1.0/9.0,1.0/9.0
+        ,1.0/9.0,1.0/9.0,1.0/9.0
+        ,1.0/9.0,1.0/9.0,1.0/9.0};
+
+    Vec3b color;
+    int sum[3];
+    int cnt;
+
+    for(int y=0;y<img.rows-1;y++){
+        for(int x=0;y<img.cols-1;x++)
+        {
+            for(int c=0;c<3;c++)
+                sum[c]=0;
+            cnt =0;
+
+            for(int h=y=1;h<=y;h++){
+
+                for(int w=x=1;w<=x;w++){
+                    color = img.at<Vec3b>(h,w);
+                    sum[0]+= color[0]*mask[cnt];
+                    sum[1]+= color[1]*mask[cnt];
+                    sum[2]+= color[2]*mask[cnt];
+                    cnt++;
+                    }
+
+                }
+
+            for(int c=0;c<3;c++){
+                if(sum[c]<0)
+                    sum[c]=0;
+                else if(sum[c]>255)
+                    sum[c]=255;
+                st.at<Vec3b>(y,x)[c]=sum[c];
+            }
+
+        }
+
+    }
+
+
+    m_show(img);
+
+    m_show(st);
+    return 0;
+}

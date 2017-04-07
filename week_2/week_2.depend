@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1490775013 source:d:\backup\hanyang_17_01\멀티미디어정보처리\실습\week_2\main.cpp
+	<opencv2/core/core.hpp>
+	<opencv2/highgui/highgui.hpp>
+
