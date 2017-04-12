@@ -15,7 +15,7 @@ String IMPUL3 ="D:\\backup\\hanyang_17_01\\멀티미디어정보처리\\실습자료\\hw2\\le
 String SAVE = "D:\\backup\\hanyang_17_01\\멀티미디어정보처리\\실습자료\\hw2\\saveImg\\save";
 String LENA = "D:\\backup\\hanyang_17_01\\멀티미디어정보처리\\실습자료\\hw1\\Lena.jpg";
 String FRUIT = "D:\\backup\\hanyang_17_01\\멀티미디어정보처리\\실습자료\\hw1\\FRUIT.BMP";
-String test ="D:\\backup\\hanyang_17_01\\멀티미디어정보처리\\실습자료\\hw2\\21.jpg";//5,7
+String test ="D:\\backup\\hanyang_17_01\\멀티미디어정보처리\\실습자료\\hw2\\18.jpg";//5,7
 int winNum;
 int saveNum=0;
 
@@ -78,13 +78,13 @@ void m_Edge(Mat img){
                 for(int h=y-1;h<=y+1;h++){
 
                     for(int w=x-1;w<=x+1;w++){
-                    sumX += img.at<uchar>(h,w)*maskY[cnt];
-                    //sumY += img.at<uchar>(h,w)*maskY[cnt];
+                    sumX += img.at<uchar>(h,w)*maskX[cnt];
+                    sumY += img.at<uchar>(h,w)*maskY[cnt];
                     cnt++;
                     }
 
                 }
-                st.at<uchar>(y,x) = abs(sumX);
+                st.at<uchar>(y,x) = abs(sumX)+abs(sumY);
         }
     }
 
